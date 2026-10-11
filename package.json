@@ -1,0 +1,30 @@
+{
+  "name": "stars-fulfilment",
+  "version": "0.1.0",
+  "description": "DigiSeller (unique code, variable price) -> MyStars FaaS -> Telegram Stars delivery",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "test": "node --test test/*.test.js",
+    "probe": "node --env-file-if-exists=.env scripts/probe-unique-code.js",
+    "price": "node --env-file-if-exists=.env scripts/price.js",
+    "wallet:new": "node scripts/new-wallet.js",
+    "orders": "node --env-file-if-exists=.env scripts/list-orders.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mystars-tg/faas-sdk": "^0.2.0",
+    "@mystars-tg/faas-wallet": "^0.2.0",
+    "better-sqlite3": "^13.0.3",
+    "express": "^5.3.0"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.9"
+  }
+}
