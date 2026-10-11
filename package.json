@@ -11,7 +11,8 @@
     "probe": "node --env-file-if-exists=.env scripts/probe-unique-code.js",
     "price": "node --env-file-if-exists=.env scripts/price.js",
     "wallet:new": "node scripts/new-wallet.js",
-    "orders": "node --env-file-if-exists=.env scripts/list-orders.js"
+    "orders": "node --env-file-if-exists=.env scripts/list-orders.js",
+    "e2e": "node --env-file-if-exists=.env scripts/e2e-test.js"
   },
   "keywords": [],
   "author": "",

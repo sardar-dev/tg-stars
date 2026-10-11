@@ -160,6 +160,20 @@ Product mein ek **text parameter "Telegram username"** banao (required). Quantit
 
 ---
 
+## 4b. Live test apne computer par (DigiSeller ke BAGHAIR) - pehle ye karo
+
+Ye script sirf MyStars + wallet payment + Stars delivery test karta hai (DigiSeller wala hissa nahi). Wallet seed aur API key tumhare computer par hi rehti hain.
+
+1. Node 22+ install karo, repo clone karo, `npm install`.
+2. Dummy wallet: `npm run wallet:new` (naya address + 24 words). Address par paise bhejo.
+   * Sabse aasan: **sirf GRAM** bhejo aur `PAYMENT_CURRENCY=ton` rakho (gas usi balance se).
+   * USDT (`usdt_ton`) mein pay karna ho to USDT ke saath **thoda GRAM bhi** chahiye (gas, ~0.1 estimate). MyStars USDT quote mein processing fee bhi jodta hai, isliye 50 Stars ka quote tumhari soch se thoda zyada ho sakta hai - dry run ye dikha dega.
+3. `.env` (copy of `.env.example`) mein bharo: `MYSTARS_API_KEY` (nayi, rotated), `WALLET_MNEMONIC`, `PAYMENT_CURRENCY`, `TEST_USERNAME`, `MAX_PAY` (is se zyada kabhi pay nahi karega).
+4. `npm run e2e` -> DRY RUN: wallet address, balance, live quote, username check. Kuch kharidta nahi.
+5. Sab theek ho to `npm run e2e -- --pay` -> order banata hai, pay karta hai, delivery ka intezaar karta hai.
+6. Telegram mein khud dekho ke Stars aaye. Tabhi test pass maano.
+Dobara chalane par wahi idempotency key use hoti hai, isliye adhoora test dobara pay nahi karta (`data/e2e-last.json`, ye file GitHub par nahi jati).
+
 ## 5. Test plan (publish se PEHLE; Task 8)
 
 Product ko **publish/visible mat karo** jab tak sab pass na ho (self-purchase/hidden-product testing DigiSeller mein kaise hota hai - ye maine verify nahi kiya; apna product-visibility setting dekho ya doosre account se kharido).
